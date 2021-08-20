@@ -1,0 +1,38 @@
+<?php
+
+return array(
+    'f11_filing_date' => 'Tarikh Pemfailan Borang 11',
+    'form11_registration' => 'Pendaftaran Borang 11',
+    'case_witness_reg' => 'Permohonan Pendaftaran Saksi Kes',
+    'claim_no' => 'No. Tuntutan',
+    'witness_reg' => 'Pendaftaran Saksi',
+    'on_behalf' => 'Bagi Pihak',
+    'ttpm' => 'Pihak TTPM',
+    'claimant' => 'Pihak yang Menuntut',
+    'opponent' => 'Penentang',
+    'witness_info' => 'Maklumat Saksi',
+    'ic_no' => 'No. Kad Pengenalan',
+    'passport_no' => 'No. Passport/KP',
+    'company_no' => 'No. Syarikat',
+    'nationality' => 'Kewarganegaraan',
+    'name' => 'Nama',
+    'address' => 'Alamat',
+    'postcode' => 'Poskod',
+    'state' => 'Negeri',
+    'district' => 'Daerah',
+    'indicate_doc' => 'Sila nyatakan dokumen yang akan dihantar',
+    'psu' => 'PSU yang dilantik',
+    'witness_summons_list' => 'Senarai Saman Saksi',
+    'branch' => 'Cawangan',
+    'no' => 'Bil.',
+    'filing_date' => 'Tarikh Pemfailan Saman Saksi',
+    'created_at' => 'Tarikh Pemfailan B11',
+    'action' => 'Tindakan',
+    'update_witness' => 'Kemaskini Saksi',
+    'reg_witness' => 'Daftar Saksi',
+    'list_witness' => 'Senarai Saksi',
+    'witness' => 'Saksi',
+    'list_of_cases' => 'Senarai Kes yang Boleh Memfailkan Saman Saksi',
+
+
+);

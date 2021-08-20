@@ -1,0 +1,33 @@
+<?php
+
+return array (
+
+  'apply_termination_notice' => 'Permohonan Notis Henti',
+  'claimant' => 'Pihak yang Menuntut',
+  'opponent' => 'Penentang',
+  'claimant_name' => 'Nama Pihak yang Menuntut',
+  'opponent_name' => 'Nama Penentang',
+  'apply_by' => 'Dimohon Oleh',
+  'against' => 'Terhadap',
+  'form1_date' => 'Tarikh Pemfailan Borang 1',
+  'hearing_date' => 'Tarikh Pendengaran',
+  'apply_method' => 'Kaedah Permohonan Notis Henti',
+  'stop_notice_date' => 'Tarikh Notis Henti',
+  'reason' => 'Sebab',
+  'additional_reason' => 'Sebab Tambahan',
+  'process_notice' => 'Proses Notis Henti',
+  'process_date' => 'Tarikh Diproses',
+  'info_stop' => 'Maklumat Notis Henti',
+  'view_stop' => 'Papar Maklumat Notis Henti',
+  'stop_notice' => 'Notis Henti',
+  'process_info' => 'Maklumat Proses',
+  'process_by' => 'Diproses Oleh',
+  'apply_method' => 'Kaedah Permohonan',
+  'date_stop_notice' => 'Tarikh Notis Henti',
+  '' => '',
+  '' => '',
+  '' => '',
+  '' => '',
+  '' => '',
+  '' => '',
+);

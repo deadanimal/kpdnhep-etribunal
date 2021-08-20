@@ -1,0 +1,133 @@
+<?php
+$locale = App::getLocale();
+$salutation_lang = "salutation_".$locale;
+?>
+<!-- saved from url=(0064)file:///C:/Users/kussairi/Desktop/borang%20ttpm/form1%20(1).html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style>
+body {
+	text-align: center;
+	font-size: smaller;
+}
+
+table td {
+	padding-bottom: 10px;
+	padding-top: 10px;
+	font-size: smaller;
+}
+.parent {
+	position: relative;
+}
+.child {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.uppercase {
+	text-transform: uppercase;
+}
+.dot{
+	text-decoration: underline dotted grey;
+}
+</style>
+
+</head><body><div style="padding-top: 20px;">
+<span style="font-size: medium;"><br><br><strong style="color: red">AKTA PELINDUNGAN PENGGUNA 1999</strong></span>
+<br><br>
+<strong style="color: red">PERATURAN-PERATURAN PELINDUNGAN PENGGUNA<br>(TRIBUNAL TUNTUTAN PENGGUNA) 1999</strong>
+<br><br>
+<strong>BORANG 10</strong>
+<br><br>
+<strong style="color: red">
+	<span>(Subperaturan 23(5))</span>
+	<br><br>
+	<i>AWARD SELEPAS PENDENGARAN</i>
+</strong>
+<br><br>
+<span style="font-weight: normal;">DALAM TRIBUNAL TUNTUTAN PENGGUNA</span>
+<br><br>
+<span style="font-weight: normal;">DI</span> <strong>{{ $form4->case->branch->branch_name }}</strong>
+<br>
+<span style="font-weight: normal;">DI NEGERI</span> <strong>{{ $form4->case->branch->state->state }}</strong> <span style="font-weight: normal;">MALAYSIA</span>
+<br>
+<span style="font-weight: normal;">TUNTUTAN NO.:</span> <strong>{{ $form4->case->case_no }}</strong>
+</b></b></div><b><b>
+
+<div style=" padding: 20px; margin-top: 30px;">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+		<tbody>
+			<tr>
+				<td align="center" height="30">ANTARA</td>
+			</tr>
+
+			<tr>
+				<td>
+					<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+						<tbody>
+							<tr>
+								<td><b>{{ $form4->case->claimant->name }}<br>{{ $form4->case->claimant->username }}</b></td>
+
+								<td align="right">Pihak Yang Menuntut</td>
+							</tr>
+						</tbody>
+					</table>	
+				</td>
+			</tr>
+			<tr>
+				<td align="center">DAN</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+						<tbody>
+							<tr>
+								<td><b>{{ $form4->case->opponent_address->name }}<br>{{ $form4->case->opponent->username }}</b></td>
+
+								<td align="right">Penentang</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>	
+			</tr>
+			<tr>
+				<td>
+					<p style="text-align: justify; text-indent: 25px;" align="center">
+						Tindakan ini telah didengar di hadapan <strong>{{ $form4->president->ttpm_data->president->salutation->$salutation_lang }} {{ $form4->president->name }}</strong> pada <strong>{{ date('j F Y', strtotime($form4->hearing->hearing_date.' '.$form4->hearing->hearing_time)) }}</strong> <span style="color: blue"> di <strong>{{ $form4->hearing->branch->branch_name }}</strong></span><span style="color: red;"> dengan kehadiran pihak yang menuntut dan penentang</span>, Tribunal dengan ini memerintahkan:<span style="color: red"> Bagi {{ $form4->award->f10->type_my }}</span>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p style="padding: 0 25px; font-weight: bold">
+						Tuntutan pihak yang menuntut dibatalkan.
+					</p>
+				</td>
+				</tr>
+				<tr>
+					<td><p>Bertarikh pada <b>{{ date('j') }}</b> haribulan <b>{{ date('F Y') }}</b></p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<table border="0" width="100%"">
+			<tbody>
+				<tr>
+					<td align="center" width="40%" height="190">
+						<br>( METERAI )<br> <img width="140px" height="140px" src="http://103.21.183.181/etribunalv2/public/img/cop.png"><br>
+					</td>
+					<td align="center" width="40%" height="190">
+						<span class="font-blue-chambray">
+							<img style="width:150px;height:100px;" src="https://upload.wikimedia.org/wikipedia/commons/3/38/Alice_Sara_Ott_-_Signature.jpg">
+						</span>
+						<br>
+						<span style="color: red">{{ $form4->president->name }}<br>
+						PRESIDENT<br>
+						TRIBUNAL TUNTUTAN PENGGUNA<br>MALAYSIA</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

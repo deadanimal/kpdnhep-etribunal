@@ -1,0 +1,110 @@
+<?php
+$locale = App::getLocale();
+$salutation_lang = "salutation_".$locale;
+?>
+<style>
+body {
+	text-align: center;
+	font-size: smaller;
+}
+
+table td {
+	padding-bottom: 10px;
+	padding-top: 10px;
+	font-size: smaller;
+}
+.parent {
+  position: relative;
+}
+.child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+
+<div style="padding-top: 20px;">
+	<span style="font-size: medium;color: red">
+		<strong>
+			<br><br>AKTA PERLINDUNGAN PENGGUNA 1999
+			<br><br>
+			PERATURAN-PERATURAN PELINDUNGAN PENGGUNA<br>(TRIBUNAL TUNTUTAN PENGGUNA) 1999
+			<br><br>
+		</strong>
+	</span>
+	<strong>BORANG 9</strong>
+	<br><br>
+	<span style="font-weight: bold; color: red">
+		(Subperaturan 22(2))
+		<br><br><i>AWARD DENGAN PERSETUJUAN</i>
+	</span>
+	<br><br>
+	<span style="font-weight: normal;">DALAM TRIBUNAL TUNTUTAN PENGGUNA</span>
+	<br><br>
+	<span style="font-weight: normal;">DI</span> <strong>{{ $form4->case->branch->branch_name }}</strong>
+	<br>
+	<span style="font-weight: normal;">DI NEGERI</span> <strong>{{ $form4->case->branch->state->state }}</strong> <span style="font-weight: normal;">MALAYSIA</span>
+	<br>
+	<span style="font-weight: normal;">TUNTUTAN NO.:</span> <strong>{{ $form4->case->case_no }}</strong>
+</b></b></div><b><b>
+
+<div style=" padding: 20px; margin-top: 30px;">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td  align="center"  height="30">ANTARA</td>
+	</tr>
+
+	<tr>
+		<td>
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td><b>{{ $form4->case->claimant->name }}<br>{{ $form4->case->claimant->username }}</b></td>
+
+					<td  align="right"   >Pihak Yang Menuntut</td>
+				</tr>
+			</table>	
+		</tr>
+		<tr>
+			<td  align="center"  >DAN</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+					<tr>
+						<td><b>{{ $form4->case->opponent_address->name }}<br>{{ $form4->case->opponent->username }}</b></td>
+
+						<td  align="right"   >Penentang</td>
+					</tr>
+				</table>
+			</td>	
+		</tr>
+		<tr>
+		<td>
+		<p style="text-indent: 25px">
+		Tindakan ini telah pada hari ini dipanggil untuk pendengaran di hadapan <b>{{ $form4->president->ttpm_data->president->salutation->$salutation_lang }} {{ $form4->president->name }} </b><span style="color: red">pada <b>{{ date('j F Y', strtotime($form4->hearing->hearing_date.' '.$form4->hearing->hearing_time)) }},</b></span> dengan kehadiran pihak yang menuntut dan penentang, dan kedua-dua pihak telah bersetuju, Tribunal dengan ini memerintahkan:</p>
+		<p style="padding: 0 25px; font-weight: bold">
+				Penentang membayar balik RM{{ number_format($form4->award->award_cost_value,2,'.',',') }} kepada Pihak Yang Menentang di dalam {{ $form4->award->award_obey_duration }} {{ $form4->award->term->term_my }} daripada tarikh Award.<br></p>
+		
+		</td>
+		</tr>
+		<tr>
+		<td ><p>Bertarikh pada <b>{{ date('j') }}</b> haribulan <b>{{ date('F Y') }}</b></p></td>
+	</tr>
+	</table>
+</div>
+<div >
+<table border="0" width="100%" >
+		<tr>
+			<td align="center" width="40%" height="200" >
+				<br>(METERAI)<br></br> <img width="140px" height="140px" src="http://103.21.183.181/etribunalv2/public/img/cop.png"/><br />
+			</td>
+			<td align="center" width="40%" class="uppercase" height="200" >
+				<span class="font-blue-chambray"><img style="width:150px;height:100px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Mahathir_Mohamad_signature.svg/2000px-Mahathir_Mohamad_signature.svg.png"></span><br><b style="color: red">{{ $form4->president->name }}</b><br/> Presiden<br/>
+				<span style="color: red">TRIBUNAL TUNTUTAN PENGGUNA<br />
+				MALAYSIA</span>
+
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,247 @@
+<head>
+    <style>
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        td, th {
+            font-family: serif !important;
+            padding: 10px;
+            font-size: 18px;
+            line-height: 25px;
+        }
+
+        span, a, p, h1, h2 {
+            font-family: serif !important;
+        }
+
+        span, a, p {
+            font-size: 18px;
+            line-height: 25px;
+        }
+
+        p {
+            text-indent: 30px;
+        }
+
+        .justify {
+            text-align: justify;
+        }
+
+        .parent {
+            position: relative;
+        }
+
+        .child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        .lowercase {
+            text-transform: lowercase;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .camelcase {
+            text-transform: capitalize;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .break {
+            page-break-before: always;
+            margin-top: 25px;
+        }
+
+        .divider {
+            width: 5px;
+            vertical-align: top;
+        }
+
+        .no-padding {
+            padding: 0px;
+        }
+
+        .fit {
+            max-width: 100%;
+            white-space: nowrap;
+        }
+
+        .absolute-center {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+
+        .top {
+            vertical-align: top;
+        }
+
+        .watermark {
+            padding: 25px;
+            background-image: url('{{ url('images/ttpm_watermark.png') }}');
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    </style>
+</head>
+
+<body class="center">
+
+<div class='watermark'>
+    <span class='bold uppercase'>AKTA PERLINDUNGAN PENGGUNA 1999</span><br><br>
+    <span class='bold uppercase'>PERATURAN-PERATURAN PERLINDUNGAN PENGGUNA (TRIBUNAL TUNTUTAN PENGGUNA)</span><br>
+    <span class='bold uppercase'>PERATURAN 1999</span><br><br>
+
+    <span class='uppercase'>DALAM TRIBUNAL TUNTUTAN PENGGUNA</span><br><br>
+    <span class='uppercase'>DI </span>
+    <span class='bold uppercase'>{{ $stop_notice->case->branch->branch_name  or ''}}</span><br>
+    <span class='uppercase'>DI NEGERI</span>
+    <span class='bold uppercase'>{{ $stop_notice->case->branch->state->state }}</span>
+    <span class='uppercase'> MALAYSIA</span><br>
+    <span class='uppercase'>NO TUNTUTAN: </span>
+    <span class='bold uppercase'>{{ $stop_notice->case->case_no }}</span><br><br>
+
+    <table>
+        <tr>
+            <td class='center uppercase' colspan="2">ANTARA</td>
+        </tr>
+        <tr>
+            <td class='bold uppercase no-padding' style="width: 70%">
+                {{ $stop_notice->case->claimant_address->name }}<br>
+                {{ $stop_notice->case->claimant_address->nationality_country_id == 129 ? 'NO. KP: '.$stop_notice->case->claimant_address->identification_no : 'No Pasport: '.$stop_notice->case->claimant_address->identification_no }}
+
+                @if($stop_notice->case->extra_claimant)
+                    /
+                    <br><br>
+                    {{ $stop_notice->case->extra_claimant->name }}<br>
+                    {{ $stop_notice->case->extra_claimant->nationality_country_id == 129 ? 'No. KP: '.$stop_notice->case->extra_claimant->identification_no : 'No. Pasport: '.$stop_notice->case->extra_claimant->identification_no  }}
+                @endif
+            </td>
+            <td class='camelcase'>Pihak Yang Menuntut</td>
+        </tr>
+        <tr>
+            <td class='center uppercase' colspan="2">DAN</td>
+        </tr>
+        <tr>
+            <td class='bold uppercase no-padding' style="width: 70%">
+
+                @if($stop_notice->multiOpponents->opponent_address)
+
+                    {{ $stop_notice->multiOpponents->opponent_address->name }}<br>
+                    @if($stop_notice->multiOpponents->opponent_address->is_company == 1)
+                        ( {{ $stop_notice->multiOpponents->opponent_address->identification_no }} )
+                    @else
+                        {{ $stop_notice->multiOpponents->opponent_address->nationality_country_id == 129 ? 'NO. KP: '.$stop_notice->multiOpponents->opponent_address->identification_no : 'No. Pasport: '.$stop_notice->multiOpponents->opponent_address->identification_no }}
+                    @endif
+
+                @endif
+            </td>
+            <td class='camelcase'>Penentang</td>
+        </tr>
+    </table>
+
+    <br><br>
+
+    <span class="center bold uppercase">NOTIS HENTI </span><br><br>
+
+    <div class='left'>
+        <span>Ambil perhatian bahawa Pihak Yang Menuntut dalam tuntutan ini memberhentikan tindakan ke atas pihak Penentang.</span><br><br><br><br>
+
+    </div>
+
+    <table>
+        <tr>
+            <td class='left top' style="width: 45%">
+                <span>Bertarikh pada</span> <span
+                        class='bold'>{{ date('d').' '.localeMonth(date('F')).' '.date('Y') }}</span>
+            </td>
+            <td style="width: 10%"></td>
+            <td class='center top' style="width: 45%;">
+                ................................................<br>
+                (Tandatangan Pihak Yang Menuntut)<br><br>
+                <div class="left">
+                    Nama: <span class="bold uppercase">{{$stop_notice->case->claimant->name}}</span><br>
+                    No. KP : <span class="bold uppercase">{{$stop_notice->case->claimant->username}}</span>
+                </div>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td class='left top' style="width: 45%">
+                Kepada :
+                (1) Setiausaha,<br>
+                {{$stop_notice->case->branch->branch_address  or ''}}<br>
+                @if( $stop_notice->case->branch->branch_address2 )
+                    {{$stop_notice->case->branch->branch_address2  or ''}}<br>
+                @endif
+                @if( $stop_notice->case->branch->branch_address2 )
+                    {{$stop_notice->case->branch->branch_address3  or ''}}<br>
+                @endif
+                {{$stop_notice->case->branch->branch_poscode  or ''}} {{ $stop_notice->case->branch->district ? ($stop_notice->case->branch->district->district ) : ''}} {{ $stop_notice->case->branch->state ? ($stop_notice->case->branch->state->state ) : ''}}
+                .
+            </td>
+            <td style="width: 10%"></td>
+            <td class='left top' style="width: 45%;">
+                (2) <b>{{$stop_notice->multiOpponents->opponent->name  or ''}}</b><br>
+
+                @if( $stop_notice->multiOpponents->opponent_address )
+                    {{ $stop_notice->multiOpponents->opponent_address->street_1 }},<br>
+                @endif
+                @if( $stop_notice->multiOpponents->opponent_address->street_2 )
+                    {{$stop_notice->multiOpponents->opponent_address->street_2 }},<br>
+                @endif
+                @if( $stop_notice->multiOpponents->opponent_address->street_3 )
+                    {{$stop_notice->multiOpponents->opponent_address->street_3 }},<br>
+                @endif
+                {{ $stop_notice->multiOpponents->opponent_address->postcode  or '' }},<br>
+                @if( $stop_notice->multiOpponents->opponent_address->district )
+                    {{ $stop_notice->multiOpponents->opponent_address->district->district }},<br>
+                @endif
+                @if( $stop_notice->multiOpponents->opponent_address->state )
+                    {{ $stop_notice->multiOpponents->opponent_address->state->state }}.<br>
+                @endif
+            </td>
+        </tr>
+        <tr>
+            <td class="center"><small>(Alamat Tribunal Tuntutan Pengguna berkenaan)</small></td>
+            <td></td>
+            <td class="center"><small>(Nama &amp; Alamat Penentang)</small></td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+

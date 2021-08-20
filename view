@@ -1,0 +1,77 @@
+DELIMITER $$
+
+ALTER ALGORITHM=UNDEFINED DEFINER=`etribunalV2`@`10.23.155.180` SQL SECURITY DEFINER VIEW `view_award_form12` AS
+SELECT
+  `f12`.`claim_case_id` AS `claim_case_id`,
+  `f12`.`form4_id`      AS `form12_form4_id`,
+  (SELECT
+     `a`.`form4_id`
+   FROM `view_award_form4` `a`
+   WHERE ((`a`.`form4_id` > `f12`.`form4_id`)
+          AND (`f12`.`claim_case_id` = `a`.`claim_case_id`))
+   ORDER BY `a`.`form4_id`
+   LIMIT 1) AS `award_form4_id`
+FROM `view_form12_form4` `f12`$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+ALTER ALGORITHM=UNDEFINED DEFINER=`etribunalV2`@`10.23.155.180` SQL SECURITY DEFINER VIEW `view_award_form4` AS
+SELECT
+  `cc`.`claim_case_id` AS `claim_case_id`,
+  `f4`.`form4_id`      AS `form4_id`,
+  `a`.`award_id`       AS `award_id`
+FROM ((`claim_case` `cc`
+    JOIN `form4` `f4`
+      ON ((`f4`.`claim_case_id` = `cc`.`claim_case_id`)))
+   JOIN `award` `a`
+     ON ((`a`.`award_id` = `f4`.`award_id`)))$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+ALTER ALGORITHM=UNDEFINED DEFINER=`etribunalV2`@`10.23.155.180` SQL SECURITY DEFINER VIEW `view_case_sequence` AS
+SELECT
+  `claim_case`.`claim_case_id` AS `case_id`,
+  CAST(SUBSTRING_INDEX(`claim_case`.`case_no`,'-',-(1)) AS SIGNED) AS `case_year`,
+  CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(`claim_case`.`case_no`,'-',-(2)),'-',1) AS SIGNED) AS `case_sequence`
+FROM `claim_case`
+WHERE (`claim_case`.`case_no` <> 'DRAFT')$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+ALTER ALGORITHM=UNDEFINED DEFINER=`etribunalV2`@`10.23.155.180` SQL SECURITY DEFINER VIEW `view_classification` AS
+SELECT
+  `c1`.`claim_classification_id` AS `old_id`,
+  `c2`.`claim_classification_id` AS `new_id`
+FROM (`master_claim_classification` `c1`
+   LEFT JOIN `master_claim_classification` `c2`
+     ON ((`c1`.`rcy_id` = `c2`.`v1_code`)))$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+ALTER ALGORITHM=UNDEFINED DEFINER=`etribunalV2`@`10.23.155.180` SQL SECURITY DEFINER VIEW `view_company` AS
+SELECT `user_public_individual`.`user_public_individual_id` AS `user_public_individual_id`,`user_public_individual`.`user_id` AS `user_id`,`user_public_individual`.`nationality_country_id` AS `nationality_country_id`,`user_public_individual`.`identification_no` AS `identification_no`,`user_public_individual`.`gender_id` AS `gender_id`,`user_public_individual`.`date_of_birth` AS `date_of_birth`,`user_public_individual`.`race_id` AS `race_id`,`user_public_individual`.`occupation_id` AS `occupation_id`,`user_public_individual`.`phone_home` AS `phone_home`,`user_public_individual`.`phone_mobile` AS `phone_mobile`,`user_public_individual`.`is_tourist` AS `is_tourist`,`user_public_individual`.`created_at` AS `created_at`,`user_public_individual`.`updated_at` AS `updated_at` FROM `user_public_individual` WHERE (((`user_public_individual`.`identification_no` LIKE '%(%') OR REGEXP_LIKE(`user_public_individual`.`identification_no`,'^[0-9-]+[a-zA-Z]$')) AND (`user_public_individual`.`date_of_birth` IS NULL) AND (`user_public_individual`.`occupation_id` IS NULL) AND (`user_public_individual`.`phone_home` IS NULL))$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+ALTER ALGORITHM=UNDEFINED DEFINER=`etribunalV2`@`10.23.155.180` SQL SECURITY DEFINER VIEW `view_duplicate_form4` AS
+SELECT
+  `form4`.`claim_case_id` AS `claim_case_id`,
+  `form4`.`hearing_id`    AS `hearing_id`,
+  COUNT(0)                AS `count`,
+  `form4`.`created_at`    AS `created_at`
+FROM `form4`
+GROUP BY `form4`.`claim_case_id`,`form4`.`hearing_id`
+HAVING (COUNT(0) > 1)
+ORDER BY `form4`.`created_at` DESC$$
+
+DELIMITER ;

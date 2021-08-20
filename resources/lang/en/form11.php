@@ -1,0 +1,38 @@
+<?php
+
+return array(
+    'f11_filing_date' => 'Form 11 Filing Date',
+    'form11_registration' => 'Form 11 Registration',
+    'case_witness_reg' => 'Case Witness Register Application',
+    'claim_no' => 'Claim No.',
+    'witness_reg' => 'Witness Registration',
+    'on_behalf' => 'On Behalf',
+    'ttpm' => 'TTPM Parties',
+    'claimant' => 'Claimant',
+    'opponent' => 'Respondent',
+    'witness_info' => 'Witness Information',
+    'ic_no' => 'Identity Card No.',
+    'passport_no' => 'Passport/IC No.',
+    'company_no' => 'Company No.',
+    'nationality' => 'Nationality',
+    'name' => 'Name',
+    'address' => 'Address',
+    'postcode' => 'Postcode',
+    'state' => 'State',
+    'district' => 'District',
+    'indicate_doc' => 'Please indicate the document to be submitted',
+    'psu' => 'Assigned PSU',
+    'witness_summons_list' => 'Witness Summons List',
+    'branch' => 'Branch',
+    'no' => 'No.',
+    'filing_date' => 'Witness Summons Filing Date',
+    'created_at' => 'Filing Date F11',
+    'action' => 'Action',
+    'update_witness' => 'Update Witness',
+    'reg_witness' => 'Register Witness',
+    'list_witness' => 'List of Witness',
+    'witness' => 'Witness',
+    'list_of_cases' => 'List of cases that can filed Summon Witness',
+
+
+);
