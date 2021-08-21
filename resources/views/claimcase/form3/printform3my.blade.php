@@ -242,7 +242,7 @@
 
 		<table style="margin-top: 100px;">
 			<tr>
-				<td class='center no-padding' style="width: 40%; text-decoration: underline;">{{ date('j', strtotime($claim->form1->filing_date.' 00:00:00')).' '.localeMonth(date('F', strtotime($claim_case_opponent->form2->form3->filing_date.' 00:00:00'))).' '.date('Y', strtotime($claim->form1->filing_date.' 00:00:00')) }}</td>
+				<td class='center no-padding' style="width: 40%; text-decoration: underline;">{{ date('j', strtotime($claim_case_opponent->form2->form3->filing_date.' 00:00:00')).' '.localeMonth(date('F', strtotime($claim_case_opponent->form2->form3->filing_date.' 00:00:00'))).' '.date('Y', strtotime($claim_case_opponent->form2->form3->filing_date.' 00:00:00')) }}</td>
 				<td style="width: 20%"></td>
 				<td class='center no-padding' style="width: 40%; position: relative; ">
 					................................................
