@@ -85,7 +85,7 @@ var TableDatatablesButtons = function () {
             "columns": [
                  { data: null, 'orderable' : false, 'searchable' : false},
                  { data: "case_no", name: "case_no"},
-                 { data: "branch", name: "branch"},
+                 { data: "branch", name: "branch", 'searchable': false},
                  { data: "filing_date", name:"form1.filing_date"},
                  { data: "action", name:"action", 'orderable' : false, 'searchable' : false},
             ],
